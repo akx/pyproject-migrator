@@ -19,7 +19,7 @@ You can install the project from Pip with
 pip install pyproject-migrator
 ```
 
-but it may be more useful to use `pipx`[pipx] to run it as a tool; if you prefer to do that, just substitute
+but it may be more useful to use [`pipx`][pipx] to run it as a tool; if you prefer to do that, just substitute
 `pipx run pyproject-migrator` for `pyproject-migrator` in the examples below.
 
 ## Usage
