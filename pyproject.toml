@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyproject-migrator"
+description = 'Convert setup.cfg, etc. to pyproject.toml files'
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = []
+authors = [
+    { name = "Aarni Koskela", email = "akx@iki.fi" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+    "tomlkit~=0.11.0",
+]
+dynamic = ["version"]
+
+[project.scripts]
+pyproject-migrator = "pyproject_migrator.cli:cli"
+
+[project.urls]
+Documentation = "https://github.com/unknown/pyproject-migrator#readme"
+Issues = "https://github.com/unknown/pyproject-migrator/issues"
+Source = "https://github.com/unknown/pyproject-migrator"
+
+[tool.hatch.version]
+path = "pyproject_migrator/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+    "pytest",
+    "pytest-cov",
+]
+[tool.hatch.envs.default.scripts]
+cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=pyproject_migrator --cov=tests {args}"
+no-cov = "cov --no-cov {args}"
+
+[[tool.hatch.envs.test.matrix]]
+python = ["37", "38", "39", "310", "311"]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = [
+    "pyproject_migrator/__about__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "no cov",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.ruff]
+ignore = [
+    "E501",
+]
