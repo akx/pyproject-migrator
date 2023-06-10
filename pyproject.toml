@@ -30,9 +30,9 @@ dynamic = ["version"]
 pyproject-migrator = "pyproject_migrator.cli:cli"
 
 [project.urls]
-Documentation = "https://github.com/unknown/pyproject-migrator#readme"
-Issues = "https://github.com/unknown/pyproject-migrator/issues"
-Source = "https://github.com/unknown/pyproject-migrator"
+Documentation = "https://github.com/akx/pyproject-migrator#readme"
+Issues = "https://github.com/akx/pyproject-migrator/issues"
+Source = "https://github.com/akx/pyproject-migrator"
 
 [tool.hatch.version]
 path = "pyproject_migrator/__about__.py"
