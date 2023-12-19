@@ -4,7 +4,13 @@ from pathlib import Path
 
 from pyproject_migrator.result import Result
 
-CONFIG_FILES = {"setup.cfg", "mypy.ini"}
+PYTEST_WS_SPLIT_KEYS = {"addopts", "norecursedirs", "doctest_optionflags"}
+
+CONFIG_FILES = {
+    "mypy.ini",
+    "pytest.ini",
+    "setup.cfg",
+}
 
 
 def massage_value(value, key, *, ws_split_keys):
@@ -22,7 +28,7 @@ def massage_value(value, key, *, ws_split_keys):
     return value
 
 
-def translate_config(config, *, ws_split_keys=()):
+def translate_config(config: dict, *, ws_split_keys=()) -> dict:
     return {
         key: massage_value(value, key, ws_split_keys=ws_split_keys)
         for key, value in config.items()
@@ -73,9 +79,9 @@ def process_config_file(res: Result, pth: Path):
         if section.endswith("pytest"):
             translated = translate_config(
                 config[section],
-                ws_split_keys={"addopts", "norecursedirs", "doctest_optionflags"},
+                ws_split_keys=PYTEST_WS_SPLIT_KEYS,
             )
-            res.assign("tool.pytest.ini_options", translated)
+            res.merge("tool.pytest.ini_options", translated, path=pth)
             continue
         if section.endswith("isort"):
             translated = translate_config(
