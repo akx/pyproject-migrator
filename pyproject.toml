@@ -41,6 +41,7 @@ path = "pyproject_migrator/__about__.py"
 dependencies = [
     "pytest",
     "pytest-cov",
+    "syrupy",
 ]
 [tool.hatch.envs.default.scripts]
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=pyproject_migrator --cov=tests {args}"
