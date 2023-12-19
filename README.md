@@ -51,7 +51,7 @@ The tool currently supports the following configuration:
 * isort (in setup.cfg)
 * mypy (in setup.cfg and mypy.ini)
 * pylint (in setup.cfg)
-* pytest (in setup.cfg)
+* pytest (in setup.cfg and pytest.ini)
 
 Explicitly unsupported is
 
