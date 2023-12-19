@@ -22,7 +22,7 @@ def cli() -> None:
     for src in args.src:
         pth = Path(src)
         if pth.is_dir():
-            for config_file_name in CONFIG_FILES:
+            for config_file_name in sorted(CONFIG_FILES):
                 config_file = pth / config_file_name
                 if config_file.exists():
                     process_file(res, config_file)
