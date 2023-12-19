@@ -1,5 +1,12 @@
 # serializer version: 1
-# name: test_cli
+# name: test_cli[log]
+  list([
+    'Appending values in tool.pytest.ini_options->filterwarnings; make sure the order is correct',
+    "flake8-related sections ['flake8']; porting depends on which toolset to use. If you're transitioning to ruff, see https://pypi.org/project/flake8-to-ruff/",
+    "setuptools sections ['metadata', 'options']; porting depends on which toolset to use. For example, hatch (https://pypi.org/project/hatch/) can port metadata to pyproject.toml.",
+  ])
+# ---
+# name: test_cli[result]
   TOMLDocument({
     'tool': Table({
       'isort': Table({
@@ -36,7 +43,12 @@
             'IGNORE_EXCEPTION_DETAIL',
             'ALLOW_UNICODE',
           ]),
+          'env': Array([
+            'AWS_ACCESS_KEY_ID=foobar_key',
+            'AWS_SECRET_ACCESS_KEY=foobar_secret',
+          ]),
           'filterwarnings': Array([
+            'ignore:.*imp module is deprecated.*:DeprecationWarning',
             'error',
             'default:Exception ignored.*FileIO.*',
           ]),
