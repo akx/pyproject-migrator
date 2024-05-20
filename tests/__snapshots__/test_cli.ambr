@@ -38,6 +38,7 @@
       }),
       'pytest': Table({
         'ini_options': Table({
+          'DJANGO_SETTINGS_MODULE': 'my_test_settings.settings',
           'doctest_optionflags': Array([
             'NORMALIZE_WHITESPACE',
             'IGNORE_EXCEPTION_DETAIL',

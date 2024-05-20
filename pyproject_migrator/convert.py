@@ -56,6 +56,7 @@ SETUPTOOLS_SECTION_RE = re.compile(
 
 def process_config_file(res: Result, pth: Path):
     config = configparser.ConfigParser()
+    config.optionxform = str
     config.read(pth)
     setuptools_sections = {}
     flake8_sections = {}
